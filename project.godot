@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Endless"
+run/main_scene="res://scenes/title_screen.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+config/icon="res://icon.png"
+
+[autoload]
+
+LootLocker="*res://scripts/lootlocker.gd"
+Globals="*res://scripts/globals.gd"
+Fader="*res://scenes/fader.tscn"
+ParticleCache="*res://scripts/particle_cache.gd"
+SaveLoad="*res://scripts/saveload.gd"
+
+[display]
+
+window/size/viewport_width=540
+window/size/viewport_height=960
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
+window/handheld/orientation=1
+
+[gui]
+
+theme/custom_font="res://assets/minecraftia-regular.ttf"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

@@ -1,0 +1,240 @@
+[gd_scene load_steps=10 format=3 uid="uid://dk5q40nwepbsj"]
+
+[ext_resource type="Texture2D" uid="uid://bwnwoe0570hd4" path="res://assets/sprites/walls/wall_default.png" id="1_krly2"]
+[ext_resource type="Script" path="res://scripts/wall.gd" id="1_xofiw"]
+[ext_resource type="Material" uid="uid://cvu567damd6s2" path="res://assets/particle_materials/wall_implosion.tres" id="3_um5jr"]
+[ext_resource type="AudioStream" uid="uid://cyq0njwu7wg34" path="res://assets/sounds/slob_beep.wav" id="3_vjdtv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1rpl"]
+size = Vector2(88, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj3b1"]
+size = Vector2(42, 16)
+
+[sub_resource type="Animation" id="Animation_2avgu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShapeWallLeft/SpriteWallLeft:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShapeWallLeft/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShapeWallRight/GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShapeWallRight/SpriteWallRight:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gap/CollisionShapeGap:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShapeWallRight:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionShapeWallLeft:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_65us2"]
+resource_name = "implode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShapeWallLeft/SpriteWallLeft:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShapeWallLeft/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShapeWallRight/GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShapeWallRight/SpriteWallRight:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gap/CollisionShapeGap:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShapeWallRight:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionShapeWallLeft:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8alv8"]
+_data = {
+"RESET": SubResource("Animation_2avgu"),
+"implode": SubResource("Animation_65us2")
+}
+
+[node name="Wall" type="StaticBody2D"]
+script = ExtResource("1_xofiw")
+
+[node name="CollisionShapeWallLeft" type="CollisionShape2D" parent="."]
+position = Vector2(-65, 0)
+shape = SubResource("RectangleShape2D_p1rpl")
+
+[node name="SpriteWallLeft" type="Sprite2D" parent="CollisionShapeWallLeft"]
+texture = ExtResource("1_krly2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CollisionShapeWallLeft"]
+emitting = false
+amount = 100
+process_material = ExtResource("3_um5jr")
+one_shot = true
+explosiveness = 0.93
+
+[node name="CollisionShapeWallRight" type="CollisionShape2D" parent="."]
+position = Vector2(65, 0)
+shape = SubResource("RectangleShape2D_p1rpl")
+
+[node name="SpriteWallRight" type="Sprite2D" parent="CollisionShapeWallRight"]
+texture = ExtResource("1_krly2")
+flip_h = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CollisionShapeWallRight"]
+emitting = false
+amount = 100
+process_material = ExtResource("3_um5jr")
+one_shot = true
+explosiveness = 0.93
+
+[node name="Gap" type="Area2D" parent="."]
+
+[node name="CollisionShapeGap" type="CollisionShape2D" parent="Gap"]
+shape = SubResource("RectangleShape2D_uj3b1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vjdtv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_8alv8")
+}
+
+[connection signal="body_exited" from="Gap" to="." method="_on_gap_body_exited"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Biome" load_steps=3 format=3 uid="uid://da7rhed8g3h6r"]
+
+[ext_resource type="Script" path="res://scripts/biome.gd" id="1_7g6ai"]
+[ext_resource type="Texture2D" uid="uid://d0a0kjsbi8h7p" path="res://assets/sprites/walls/wall_dungeon.png" id="2_at2bg"]
+
+[resource]
+script = ExtResource("1_7g6ai")
+name = "dungeon"
+color = Color(0, 0.2, 0, 1)
+wall_texture = ExtResource("2_at2bg")

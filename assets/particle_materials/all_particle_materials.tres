@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ParticleMaterialList" load_steps=5 format=3 uid="uid://5do5urbq7kjw"]
+
+[ext_resource type="Material" uid="uid://dpvmst3lmp75v" path="res://assets/particle_materials/coin_implosion.tres" id="1_bq8io"]
+[ext_resource type="Script" path="res://scripts/particle_material_list.gd" id="1_ghier"]
+[ext_resource type="Material" uid="uid://csriwurosjw86" path="res://assets/particle_materials/player_fire.tres" id="2_x1v5i"]
+[ext_resource type="Material" uid="uid://cvu567damd6s2" path="res://assets/particle_materials/wall_implosion.tres" id="3_6kv1m"]
+
+[resource]
+script = ExtResource("1_ghier")
+materials = Array[ParticleProcessMaterial]([ExtResource("1_bq8io"), ExtResource("2_x1v5i"), ExtResource("3_6kv1m")])

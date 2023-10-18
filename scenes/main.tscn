@@ -1,0 +1,468 @@
+[gd_scene load_steps=20 format=3 uid="uid://c6swuykc1uv6u"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_s2n8w"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="2_g12ke"]
+[ext_resource type="Texture2D" uid="uid://dhph60dw6agxu" path="res://assets/sprites/arrow.png" id="3_0gn8l"]
+[ext_resource type="Script" path="res://scripts/highscore_label.gd" id="3_8beul"]
+[ext_resource type="Script" path="res://scripts/leaderbord_container.gd" id="5_r353p"]
+[ext_resource type="Script" path="res://scripts/settings.gd" id="5_vm0gi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_loklj"]
+font_size = 176
+
+[sub_resource type="LabelSettings" id="LabelSettings_mocut"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_syjye"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxf7m"]
+font_size = 40
+
+[sub_resource type="Animation" id="Animation_lcxus"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_c3rmf"]
+resource_name = "hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4rweo"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fcmfl"]
+_data = {
+"RESET": SubResource("Animation_lcxus"),
+"hide": SubResource("Animation_c3rmf"),
+"show": SubResource("Animation_4rweo")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_uy5uk"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_bla2n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundLayer/CenterContainer/Score:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartUILayer/StartUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HighscoreLayer/Control/HighscorePopup:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -110)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HighscoreLayer/Control/HighscorePopup:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(540, 110)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StartUILayer/StartUI/SettingsButtonContainer/SettingsButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_76qlj"]
+resource_name = "new_highscore"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HighscoreLayer/Control/HighscorePopup:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1.5, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -110), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, -110)]
+}
+
+[sub_resource type="Animation" id="Animation_fkrvf"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundLayer/CenterContainer/Score:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartUILayer/StartUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartUILayer/StartUI/SettingsButtonContainer/SettingsButton:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_54qdc"]
+_data = {
+"RESET": SubResource("Animation_bla2n"),
+"new_highscore": SubResource("Animation_76qlj"),
+"start": SubResource("Animation_fkrvf")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_s2n8w")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="BackgroundLayer/CenterContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_loklj")
+script = ExtResource("2_g12ke")
+
+[node name="StartUILayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="StartUI" type="Control" parent="StartUILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LowerCenter" type="CenterContainer" parent="StartUILayer/StartUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Instruction" type="Label" parent="StartUILayer/StartUI/LowerCenter"]
+layout_mode = 2
+text = "Tap & Hold"
+label_settings = SubResource("LabelSettings_mocut")
+horizontal_alignment = 1
+
+[node name="Center" type="CenterContainer" parent="StartUILayer/StartUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HighscoreLabels" type="VBoxContainer" parent="StartUILayer/StartUI/Center"]
+layout_mode = 2
+
+[node name="HighscoreText" type="Label" parent="StartUILayer/StartUI/Center/HighscoreLabels"]
+layout_mode = 2
+text = "Your Highscore is"
+label_settings = SubResource("LabelSettings_syjye")
+
+[node name="Highscore" type="Label" parent="StartUILayer/StartUI/Center/HighscoreLabels"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_qxf7m")
+horizontal_alignment = 1
+script = ExtResource("3_8beul")
+
+[node name="Settings" type="ColorRect" parent="StartUILayer/StartUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.247059, 0.247059, 0.247059, 1)
+script = ExtResource("5_vm0gi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartUILayer/StartUI/Settings"]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_fcmfl")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="StartUILayer/StartUI/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.084
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="VBoxContainer" parent="StartUILayer/StartUI/Settings/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="PlayerNameContainer" type="VBoxContainer" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="PlayerName" type="Label" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/PlayerNameContainer"]
+layout_mode = 2
+text = "Player Name:"
+
+[node name="PlayerNameInput" type="LineEdit" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/PlayerNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "helloworld"
+
+[node name="PlayerNameSubmitButton" type="Button" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/PlayerNameContainer"]
+layout_mode = 2
+text = "Apply name"
+
+[node name="LeaderboardContainer" type="VBoxContainer" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer"]
+layout_mode = 2
+script = ExtResource("5_r353p")
+
+[node name="LeaderboardLabel" type="Label" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/LeaderboardContainer"]
+layout_mode = 2
+text = "Leaderbord:"
+
+[node name="LeaderboardEntryContainer" type="GridContainer" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/LeaderboardContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 3
+
+[node name="Rank" type="Label" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/LeaderboardContainer/LeaderboardEntryContainer"]
+layout_mode = 2
+text = "Rank"
+
+[node name="Name" type="Label" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/LeaderboardContainer/LeaderboardEntryContainer"]
+layout_mode = 2
+text = "Name"
+
+[node name="Score" type="Label" parent="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/LeaderboardContainer/LeaderboardEntryContainer"]
+layout_mode = 2
+text = "Score"
+
+[node name="SettingsButtonContainer" type="MarginContainer" parent="StartUILayer/StartUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.084
+offset_bottom = 0.359993
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SettingsButton" type="TextureButton" parent="StartUILayer/StartUI/SettingsButtonContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_0gn8l")
+stretch_mode = 4
+
+[node name="HighscoreLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Control" type="Control" parent="HighscoreLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HighscorePopup" type="MarginContainer" parent="HighscoreLayer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -110.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 130
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 130
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="HighscoreLayer/Control/HighscorePopup"]
+layout_mode = 2
+color = Color(1, 0.8, 0.380392, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HighscoreLayer/Control/HighscorePopup"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = -5
+
+[node name="CenterContainer" type="CenterContainer" parent="HighscoreLayer/Control/HighscorePopup/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HighscoreLayer/Control/HighscorePopup/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "New Highscore!"
+label_settings = SubResource("LabelSettings_uy5uk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_54qdc")
+}
+
+[connection signal="gui_input" from="StartUILayer/StartUI" to="." method="_on_start_ui_gui_input"]
+[connection signal="focus_entered" from="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/PlayerNameContainer/PlayerNameInput" to="StartUILayer/StartUI/Settings" method="_on_player_name_input_focus_entered"]
+[connection signal="text_changed" from="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/PlayerNameContainer/PlayerNameInput" to="StartUILayer/StartUI/Settings" method="_on_player_name_input_text_changed"]
+[connection signal="text_submitted" from="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/PlayerNameContainer/PlayerNameInput" to="StartUILayer/StartUI/Settings" method="_on_player_name_input_text_submitted"]
+[connection signal="pressed" from="StartUILayer/StartUI/Settings/MarginContainer/CenterContainer/PlayerNameContainer/PlayerNameSubmitButton" to="StartUILayer/StartUI/Settings" method="_on_player_name_submit_button_pressed"]
+[connection signal="pressed" from="StartUILayer/StartUI/SettingsButtonContainer/SettingsButton" to="StartUILayer/StartUI/Settings" method="toggle_visibility"]
